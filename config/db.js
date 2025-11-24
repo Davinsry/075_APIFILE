@@ -1,4 +1,4 @@
-const db = require('./models'); // Pastikan path model benar (biasanya ./models)
+const db = require('../models'); // Pastikan path model benar (biasanya ./models)
 
 async function connectDatabase() {
   try {
