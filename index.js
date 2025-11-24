@@ -1,14 +1,14 @@
 const express = require('express');
 const connectDatabase = require('./config/db');
-const apiroute = require('./routes/api');
+const apiRoutes = require('./routes/api');
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/v1', apiroute);
+app.use('/api', apiRoutes);
 
 async function startServer() {
     await connectDatabase();
