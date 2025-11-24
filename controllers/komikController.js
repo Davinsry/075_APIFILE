@@ -1,20 +1,20 @@
 const db = require('../models');
 const komikService = require('../services/komikService');
 
-exports.createKomik = async (req, res) => {
+async function createKomik(req, res) {
     try {
         const komikData = req.body;
 
         if (req.file) {
             komikData.imageType = req.file.mimetype;
             komikData.imageName = req.file.originalname;
-            komikData.ImageData = req.file.buffer;
+            komikData.imageData = req.file.buffer;
         }
 
         const result = await komikService.createKomik(db, komikData);
         res.status(201).json({ success: true, data: result });
     } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
+        res.status(400).json({ success: false, error: error.message });
     }
 }
 
