@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     imageType: DataTypes.STRING,
     imageName: DataTypes.STRING,
     imageData: DataTypes.BLOB('long'),
-    });
+    },
+    {
+        tableName: 'komik',
+    }
+);
     return Komik;
 }
